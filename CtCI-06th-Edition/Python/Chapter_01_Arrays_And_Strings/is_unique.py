@@ -4,9 +4,8 @@ Is Unique: Implement an algorithm to determine if a string has all unique charac
 cannot use additional data structures?
 Hints: #44, #7 7 7, #732
 """
-import time
-import unittest
-from collections import Counter, defaultdict
+from ../tests import Test
+from collections import Counter
 #Hasmap approach TC O(n) SC: O(n)
 def is_unique(s:str):
     map_characters = Counter(s)
@@ -40,6 +39,7 @@ def is_unique_sorting(s:str):
             return False
         last_character = char
     return True
+
 
 class Test(unittest.TestCase):
     test_cases = [
