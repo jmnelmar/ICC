@@ -8,6 +8,7 @@ Hints:#92, #110
 import time
 import unittest
 import pytest
+#sliding window aproach O(n)
 def string_compression(s:str):
     left, right = 0,0
     result =""
@@ -38,8 +39,8 @@ def string_compression(s:str):
         ("aaa", "a3"),
         ("a", "a"),
         ("", ""),
+        ("aaaaaaaaaaaaaa", "a14")
     ]
 )
 def test_string_compressionII(value, expected):
     assert string_compression(value) == expected
-
