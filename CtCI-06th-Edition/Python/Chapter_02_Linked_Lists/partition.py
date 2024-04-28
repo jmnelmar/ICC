@@ -9,6 +9,35 @@
     Hints: #3, #24
 """
 from LinkList import LinkList,Node
+#Mergin 2 linklists
+def partition(lst:LinkList, x:int):
+    lst_greater = LinkList(0)
+    lst_lesser = LinkList(0)
+    greater_node = lst_greater.head
+    lesser_node = lst_lesser.head
 
-def partition():
-    result  = Node
+
+    node = lst.head
+    while node is not None:
+        if node.value < x:
+            lesser_node.next = Node(node.value)
+            lesser_node = lesser_node.next
+        else:
+            greater_node.next = Node(node.value)
+            greater_node = greater_node.next
+        node = node.next
+    
+    lesser_node.next = lst_greater.head.next
+    lst_lesser.head = lst_lesser.head.next
+    print(lst_lesser)
+    return lst_lesser
+
+#Recursive method
+def partition_II(lst:LinkList, x:int):
+    pass
+        
+
+    
+lst = LinkList(values=[3,5,8,5,10,2,1])
+print(str(lst))
+partition_recursive(lst,5)
