@@ -5,8 +5,13 @@ class Node:
         self.next = None
 
 class LinkList:
-    def __init__(self,value=None):
-        self.head = Node(value)
+    def __init__(self,value=None,values=None):
+        self.head = Node()
+        if value is not None:
+            self.head = Node(value)
+        
+        if values is not None:
+            self.add_multiple(values)
 
     def add(self, value):
         aux = self.head
@@ -35,10 +40,34 @@ class LinkList:
             aux = aux.next
         return count
 
-link_list = LinkList(5)
-link_list.add(4)
-link_list.add(3)
-link_list.add(2)
-link_list.add(1)
+    def equals(self,lst):
+        
+        if len(self) != len(lst):
+            return False
+        aux = self.head
+        node = lst.head
 
-print(str(link_list))
+        while aux is not None and node is not None:
+            if aux.value != node.value:
+                return False
+            aux = aux.next
+            node = node.next
+
+        return True
+    
+    def add_multiple(self, values):
+        
+        for v in values:
+            self.add(v)
+        self.head = self.head.next
+
+@pytest.mark.parametrize(
+    "value, expected",
+    [
+        ([1,2,3,4,5],"(1) > (2) > (3) > (4) > (5) > None"),
+        ([5,4,3,2,1],"(5) > (4) > (3) > (2) > (1) > None"),
+        ([5,4,3,2,1,5,3,4,1],"(5) > (4) > (3) > (2) > (1) > (5) > (3) > (4) > (1) > None")
+    ]
+)
+def test_link_list(value,expected):
+    assert str(LinkList(values=value)) == expected

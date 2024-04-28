@@ -1,2 +1,0 @@
-# ICC
-Interview Carreer Cup
