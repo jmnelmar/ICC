@@ -34,10 +34,29 @@ def partition(lst:LinkList, x:int):
 
 #Recursive method
 def partition_II(lst:LinkList, x:int):
-    pass
-        
+    head = lst.head
+    tail = lst.head
 
+    node = lst.head
+
+    while node is not None:
+        next = node.next
+        if node.value < x:
+            node.next = head
+            head = node
+        else:
+            tail.next = node
+            tail = node
+
+        node = next
+    tail.next = None
+    chain = ""
+    while head is not None:
+        chain += f"({head.value}) > "
+        head = head.next
+    chain += "None"
+    print(chain)
     
 lst = LinkList(values=[3,5,8,5,10,2,1])
 print(str(lst))
-partition_recursive(lst,5)
+partition_II(lst,5)
