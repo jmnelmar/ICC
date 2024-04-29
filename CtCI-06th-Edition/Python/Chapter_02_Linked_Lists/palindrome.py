@@ -4,28 +4,34 @@
 from LinkList import LinkList, Node
 
 def palindrome(lst:Node):
-    map = {}
-    allowed_pivot = 0
+    reversed_list = LinkList(0)
+    head = reversed_list.head
+    aux = lst
+    while aux is not None:
+        head.next = Node(aux.value)
+        head = head.next
+        aux = aux.next
+    reversed_list.head = reversed_list.head.next
+    print(str(reversed_list))
 
+    aux = reversed_list.head
     while lst is not None:
-        if lst.value not in map:
-            map[lst.value] = 1
-        else:
-            map[lst.value] += 1
-        lst = lst.next
-        
-    for n in map.keys():
-        if map[n] == 1:
-            allowed_pivot += 1
-        elif map[n] > 2:
+        if lst.value != aux.value:
             return False
-
-    if allowed_pivot > 2:
-        return False
-
+        lst = lst.next
+        aux = aux.next
+    
     return True
 
 
 lst = LinkList(values=[0,1,2,1,0])
+print(str(lst))
+print(palindrome(lst.head))
+
+lst = LinkList(values=[1,2,3,4,5])
+print(str(lst))
+print(palindrome(lst.head))
+
+lst = LinkList(values=[2,1,1,2,1,1,2])
 print(str(lst))
 print(palindrome(lst.head))
