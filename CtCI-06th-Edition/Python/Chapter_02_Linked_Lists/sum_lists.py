@@ -39,7 +39,10 @@ def sum_lists(l1:Node, l2:Node):
         head = head.next
     chain += "None"
     print(chain)
-    
+
+def sum_lists_floowup(lst1:Node, lst2:Node):
+    pass
+     
 lst = LinkList(values=[7,1,6])
 lst2 = LinkList(values=[5,9,2])
 print(str(lst))
