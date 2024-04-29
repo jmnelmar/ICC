@@ -8,22 +8,20 @@ def palindrome(lst:Node):
     head = reversed_list.head
     aux = lst
     while aux is not None:
-        head.next = Node(aux.value)
-        head = head.next
+        n = Node(aux.value)
+        n.next = head
+        head = n
         aux = aux.next
-    reversed_list.head = reversed_list.head.next
+    reversed_list.head = head
     print(str(reversed_list))
 
-    aux = reversed_list.head
     while lst is not None:
-        if lst.value != aux.value:
-            return False
+        if lst.value != head.value:
+            return False        
         lst = lst.next
-        aux = aux.next
-    
+        head = head.next
+
     return True
-
-
 lst = LinkList(values=[0,1,2,1,0])
 print(str(lst))
 print(palindrome(lst.head))
