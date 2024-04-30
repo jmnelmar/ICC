@@ -8,35 +8,32 @@
 from LinkList import LinkList, Node
 
 def intersection(lst1:LinkList, lst2:LinkList):
+    map = {}
     head1 = lst1.head
     head2 = lst2.head
-    count = 0
-    
 
-    while lst1.head is not None:
-        if lst1.head == head1:
-            count+=1
-        if count > 1:
-            print(head1.value)
-            return head1
-        lst1.head = lst1.head.next
+    while head1 is not None or head2 is not None:
+        if head1 is not None and head1  not in map:
+            map[head1] = 1
+        elif head1 is not None:
+            map[head1] += 1
         
-    count = 0
-    while lst2.head is not None:
-        if lst2.head == head2:
-            count+=1
-        if count > 1:
-            print(head2.value)
-            return head2
-        lst2.head = lst2.head.next
+        if head2 is not None and head2 not in map:
+            map[head2] = 1
+        elif head2 is not None:
+            map[head2] +=1
+        
+        if map[head1] > 1 or map[head2] > 1:
+            return head1
+
+        head1 = head1.next if head1 is not None else None
+        head2 = head2.next if head2 is not None else None
+    
     return None
 
-lst = LinkList(values=[1,2,3,4])
-lst2 = LinkList(0)
+lst1 = LinkList(values=['A','B','C','D','E','F'])
+lst2 = LinkList(values=['A','E','I'])
 
-lst2.head.next = Node(2)
-lst2.head.next.next = Node(3)
-lst2.head.next.next.next = lst.head.next.next
-#print(lst.head.next.next.next.value)
-#print(lst2.head.next.next.next.value)
-intersection(lst,lst2)
+lst2.head.next.next.next = lst1.head.next.next.next
+
+print(intersection(lst1,lst2).value)
