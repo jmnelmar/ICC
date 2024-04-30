@@ -6,7 +6,7 @@
     Hints:#20, #45, #55, #65, #76, #93, #111, #120, #129
 """
 from LinkList import LinkList, Node
-
+import pytest
 def intersection(lst1:LinkList, lst2:LinkList):
     map = {}
     head1 = lst1.head
@@ -17,23 +17,46 @@ def intersection(lst1:LinkList, lst2:LinkList):
             map[head1] = 1
         elif head1 is not None:
             map[head1] += 1
-        
         if head2 is not None and head2 not in map:
             map[head2] = 1
         elif head2 is not None:
             map[head2] +=1
-        
-        if map[head1] > 1 or map[head2] > 1:
+
+        if head1 is not None and map[head1] > 1: 
             return head1
+        if head2 is not None and map[head2] > 1:
+            return head2
 
         head1 = head1.next if head1 is not None else None
         head2 = head2.next if head2 is not None else None
     
     return None
 
-lst1 = LinkList(values=['A','B','C','D','E','F'])
-lst2 = LinkList(values=['A','E','I'])
 
-lst2.head.next.next.next = lst1.head.next.next.next
+@pytest.mark.parametrize(
+    "value1, value2, value3, value4, expected",
+    [
+        (['A','B','C','D','E','F'],['A','E','I'],3,'D', True),
+        (['A','B','C','D','E','F'],['A','E','I'],3,'E', False),
+        (['A','B','C','D','E','F'],['A','E','I'],2,'C', True),
+        (['A','B','C','D','E','F'],['A','E','I'],4,'E', True),
+        (['A','B','C','D','E','F'],['A','E','I'],5,'E', False)
+    ]
+)
+def test_intersection(value1, value2, value3, value4, expected):
+    lst1 = LinkList(values=value1)
+    lst2 = LinkList(values=value2)
 
-print(intersection(lst1,lst2).value)
+    head1= lst1.head
+    aux = lst2.head
+
+    for _ in range(value3):
+        head1 = head1.next
+    
+    while aux.next is not None:
+        aux = aux.next
+    
+    aux.next = head1
+
+    assert (intersection(lst1, lst2).value == value4) == expected 
+
