@@ -9,3 +9,30 @@
     Implement a function popAt ( int index) which performs a pop operation on a specific sub-stack.
     Hints:#64, #87
 """
+
+from stack import Stack
+class SetOfStacks(Stack):
+    def __init__(self, t = 0):
+        super().__init__()
+        stacks = [Stack]
+        self.treshold = 0
+        self.stack_in_use = 0
+    
+    def push(self, item):
+        if self.treshold >= len(self.stacks[self.stack_in_use]):
+            self.stack_in_use += 1
+            self.stacks.append(self.items)
+        super.push(item)
+        
+
+    def pop(self):
+        self.popAt()
+
+    def popAt(self):
+        if self.stacks[self.stack_in_use].is_empty():
+            return self.stacks.pop()
+        else:
+            return self.stacks[self.stack_in_use].pop()
+        
+    def __str__(self):
+        pass
