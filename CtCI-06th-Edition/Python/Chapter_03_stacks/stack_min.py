@@ -37,8 +37,27 @@ class MinStack(Stack):
     def stack_min(self):
         return self.min_stack.peek()
     
-
+@pytest.mark.parametrize(
+        "value1, value2, value3, expected",
+        [
+            ([5,3,6,5,1,4],3,1,True),
+            ([1,3,4,5,6,1],3,1,True),
+            ([9,3,2,4,5,6,2,1],3,1,False),
+            ([-9,3,2,4,5,6,2,1],3,1,False),
+            ([-9,3,2,4,5,6,2,1],3,-9,True)
+        ]
+)
+def test_min_stack(value1, value2, value3, expected):
+    my_minstack = MinStack()
+    for n in value1:
+        my_minstack.push(n)
     
+    for i in range(value3):
+        my_minstack.pop()
+
+    assert (my_minstack.stack_min() == value3) == expected
+
+
 mystack = MinStack()
 mystack.push(5)
 mystack.push(3)
