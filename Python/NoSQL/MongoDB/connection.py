@@ -63,12 +63,15 @@ class MongoConnection:
         obj = self._collection_obj.insert_many(documents)
         return obj
     
-    def search(self,filter = None):
+    def search(self, filter = None, projection_columns = None):
         docs = None
         if filter is None:
-            docs = self._collection_obj.find()
-        else:
-            docs = self._collection_obj.find(filter)
+            filter = {}
+        
+        if projection_columns is None:
+            projection_columns = {}
+
+        docs = self._collection_obj.find(filter,projection_columns)
         return docs
     
     def get_first_collection(self):
@@ -94,6 +97,7 @@ mongoconnection.use_collection("student")
 docs = mongoconnection.search()
 print("fetching all the documents in student")
 print_students(docs)
+print("=========================Filters=========================")
 filter = {'Sex':'F'}
 docs = mongoconnection.search(filter)
 print_students(docs,filter)
@@ -126,6 +130,11 @@ print_students(docs, filter)
 filter = {'Name':{'$regex':'^R'}}
 docs = mongoconnection.search(filter)
 print_students(docs, filter)
+print("=========================Projection=========================")
+docs = mongoconnection.search({},{'_id':0,'Name':1,'Age':1})
+for doc in docs:
+    print(doc)
+print("=========================Sor=ting========================")
 '''
 document = {'Name':'John','Regd_id':'1','Age':20,'Sex':'M'}
 id = mongoconnection.insert(document)
@@ -142,5 +151,8 @@ document_list = [
 ids = mongoconnection.insert_many(document_list)
 
 print(f"Objects were inserted with the ids: {ids} 🪄")
+
 '''
+
+
 mongoconnection.close()
