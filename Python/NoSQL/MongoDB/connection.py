@@ -84,6 +84,18 @@ class MongoConnection:
     def get_first_collection(self):
         doc = self._collection_obj.find_one()
         return doc
+    
+    def update(self, filter, values, many = False):
+        if many == False:
+            self._collection_obj.update_one(filter,values)
+        else:
+            self._collection_obj.update_many(filter, values)
+    
+    def delete(self, filter, many = False):
+        if many == False:
+            self._collection_obj.delete_one(filter)
+        else:
+            self._collection_obj.delete_many(filter)
 
 
 def print_students(docs, filter = None):
@@ -94,6 +106,8 @@ def print_students(docs, filter = None):
     print(f"Name\tAge\tSex")
     for doc in docs:
         print(f"{doc['Name']}\t{doc['Age']}\t{doc['Sex']}")
+
+
 
 mongoconnection = MongoConnection("localhost",27017)
 mongoconnection.open()
@@ -154,6 +168,34 @@ docs = mongoconnection.search({},{'_id':0,'Name':1,'Age':1},["Age",1],2)
 for doc in docs:
     print(doc)
 
+print("=========================Update One========================")
+filter = {'Regd_id':'3'}
+set_values = {'$set':{'Age':25}}
+mongoconnection.update(filter, set_values)
+docs = mongoconnection.search( {}, {'_id':0,'Regd_id':1,'Age':1})
+for doc in docs:
+    print(doc)
+print("=========================Update Many========================")
+filter = {'Regd_id':{'$gt':'4'}}
+values = {'$set':{'Age':24}}
+mongoconnection.update(filter, values, True)
+docs = mongoconnection.search( {}, {'_id':0,'Regd_id':1,'Age':1})
+for doc in docs:
+    print(doc)
+
+print("=========================Delete one========================")
+filter = {'Regd_id':'1'}
+mongoconnection.delete(filter)
+docs = mongoconnection.search()
+for doc in docs:
+    print(doc)
+
+print("=========================Delete Many========================")
+filter = {'Regd_id':{'$gt':'4'}}
+mongoconnection.delete(filter,True)
+docs = mongoconnection.search()
+for doc in docs:
+    print(doc)
 
 '''
 document = {'Name':'John','Regd_id':'1','Age':20,'Sex':'M'}
