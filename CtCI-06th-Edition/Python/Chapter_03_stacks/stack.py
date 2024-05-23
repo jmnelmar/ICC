@@ -21,3 +21,10 @@ class Stack:
 
     def __bool__(self):
         return bool(self.items)
+    
+    def __str__(self):
+        stack_string = ""
+        for i in reversed(self.items):
+            stack_string += f"({i})\n"
+            stack_string += f"===\n"
+        return stack_string
