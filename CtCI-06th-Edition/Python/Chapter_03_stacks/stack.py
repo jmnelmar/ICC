@@ -22,6 +22,9 @@ class Stack:
     def __bool__(self):
         return bool(self.items)
     
+    def to_list(self):
+        return self.items
+    
     def __str__(self):
         stack_string = ""
         for i in reversed(self.items):
