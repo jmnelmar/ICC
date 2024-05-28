@@ -9,55 +9,63 @@ and dequeueCat. You may use the built-in Linked list data structure.
 Hints: #22, #56, #63
 '''
 import time
-
+import pytest
 
 class Node:
-    def __init__(self, data, next = None):
-        self.next = next
+    def __init__(self, data, next_node=None):
         self.data = data
+        self.next_node = next_node
 
     def __str__(self):
         return str(self.data)
 
+
 class LinkedList:
-    def __init__(self, head = None):
+    def __init__(self, head=None):
         self.head = head
 
     def insert(self, node):
         if self.head is None:
             self.head = node
             return
-        else:
-            current = self.head
-            while current.next is not None:
-                current = current.next
-                current.next = node
+        current_node = self.head
+        while current_node.next_node is not None:
+            current_node = current_node.next_node
+        current_node.next_node = node
 
-    def pop(self):
+    def pop_head(self):
         if self.head is not None:
-            head_node = self.head
-            self.head = self.head.next
-            return head_node
+            head_to_pop = self.head
+            self.head = self.head.next_node
+            return head_to_pop
+
         return None
 
     def size(self):
-        current = self.head
-        count = 0
-        while current is not None:
-            current = current.next
-            count += 1
-        return count
-        
+        current_node = self.head
+        size = 0
+        while current_node is not None:
+            size += 1
+            current_node = current_node.next_node
+        return size
+
+
+# Animal Definitions
+
+
 class Animal:
     def __init__(self, name):
         self.time_admitted = time.time()
         self.name = name
 
-class Dog(Animal):
-    pass
 
 class Cat(Animal):
     pass
+
+
+class Dog(Animal):
+    pass
+
 
 class AnimalShelter(LinkedList):
     def enqueue(self, animal):
@@ -65,15 +73,32 @@ class AnimalShelter(LinkedList):
         self.insert(animal_node)
 
     def dequeue_any(self):
-        return super().pop()
-    
+        return super().pop_head()
+
     def dequeue_cat(self):
         previous_node = None
         current_node = self.head
         while current_node is not None:
             if isinstance(current_node.data, Cat):
-                previous_node.next = current_node.next 
+                previous_node.next_node = current_node.next_node
                 return current_node.data
             previous_node = current_node
-            current_node = current_node.next
-            
+            current_node = current_node.next_node
+        return None
+
+    def dequeue_dog(self):
+        previous_node = None
+        current_node = self.head
+        while current_node is not None:
+            if isinstance(current_node.data, Dog):
+                previous_node.next_node = current_node.next_node
+                return current_node.data
+            previous_node = current_node
+            current_node = current_node.next_node
+        return None
+
+animal_shelter = AnimalShelter()
+animal_shelter.enqueue(Cat("Fluffy"))
+animal_shelter.enqueue(Dog("Sparky"))
+animal_shelter.enqueue(Cat("Sneezy"))
+print(animal_shelter.size())
