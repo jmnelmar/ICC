@@ -55,11 +55,29 @@ def removeDuplicates( nums:[int]) -> int:
     while count < len(nums):
         if nums.count(nums[count]) > 2:
             del nums[count]
-            
         count += 1
 
     print(nums)
     return len(nums)
+
+def removeDuplicatesIIPointers(nums:[int]):
+    #Edge scenario if lenght of nums is less than or equal to 2, return length 
+    if len(nums) <= 2:
+        return len(nums)
+    #Initialize slow pointer
+    slow = 2
+
+    #Iterate throught the array with the fast pointer
+    for fast in range(2,len(nums)):
+        # If current element is not equal to element at slow - 2
+        if nums[fast] != nums[slow - 2]:
+            #update element at Slow and increment slow
+            nums[slow] = nums[fast]
+            slow += 1
+    
+    #Return the lenght of the modified array 
+    return slow
+
 
 nums = [1,1,1,2,2,3]
 removeDuplicates(nums)
