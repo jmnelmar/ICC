@@ -78,9 +78,23 @@ def removeDuplicatesIIPointers(nums:[int]):
     #Return the lenght of the modified array 
     return slow
 
+#           f
+# 1,1,2,2,3,3
+#           s
+#nums = [1,1,1,2,2,3]
+#removeDuplicates(nums)
 
-nums = [1,1,1,2,2,3]
-removeDuplicates(nums)
+#nums = [0,0,1,1,1,1,2,3,3]
+#removeDuplicates(nums)
+from collections import Counter
+nums = [3,2,3]
 
-nums = [0,0,1,1,1,1,2,3,3]
-removeDuplicates(nums)
+dic = Counter(nums)
+maxx = 0
+result = 0
+for key in dic.keys():
+    if dic[key] > maxx:
+        result = key
+        maxx = dic[key]
+    
+print(result) 
