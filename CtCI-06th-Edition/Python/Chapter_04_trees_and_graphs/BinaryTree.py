@@ -1,4 +1,4 @@
-#from Node import Node
+from Node import Node
 def __init__(self, data=None):
     self.data = data
     self.left = None
@@ -47,9 +47,7 @@ class BinaryTree:
             self.postorder(node.left)
             self.postorder(node.right)
             print(node.data, end=',')
-
-    
-
+        
 if __name__ == '__main__':
     bt = BinaryTree('g')
     bt.insert('c',bt.root)
@@ -69,3 +67,5 @@ if __name__ == '__main__':
     print('\n\npost order traverse root-right-left')
     bt.postorder(bt.root)
     print('')
+   
+     
