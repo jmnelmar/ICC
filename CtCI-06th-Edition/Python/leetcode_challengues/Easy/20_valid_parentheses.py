@@ -16,15 +16,13 @@ def isValid(s: str) -> bool:
 def isValidII(s) -> bool:
     stack = []
     map = {")":"(","]":"[", "}":"{" }
-
     for c in s:
         if c in map:
             top = stack.pop() if stack else "@"
-            if top != map[c]:
+            if map[c] != top:
                 return False
         else:
             stack.append(c)
-    
     return  len(stack) == 0
 
 
