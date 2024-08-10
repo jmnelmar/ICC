@@ -17,7 +17,8 @@ public class CountingDuplicates{
 
         
     }
-
+    
+    //Using Hashmap and compute method
     public static Map<Character, Integer> countingDuplicates(String word){
 
         Map<Character, Integer> result = new HashMap<>();
@@ -28,4 +29,6 @@ public class CountingDuplicates{
 
         return result;
     }
+
+    //Using stream 
 }
