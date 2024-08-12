@@ -18,18 +18,37 @@ def make_a_move(cell1, cell2):
     board[int(cell2[0])][int(cell2[1])] = value_anterior
 
 def check_the_board(cell):
-    row = board[cell[0]]
-    left = cell[1] - 1
-    right = cell[1] + 1
+    row = board[int(cell[0])]
+    left = int(cell[1]) - 1
+    right = int(cell[1]) + 1
     matches = []
-    matches.append(cell[1])
+    matches.append(int(cell[1]))
     while left >= 0 and right < len(row):
-        if row[left] == 1 and row[cell[1]] == 1 and row[right] == 1:
+        if row[left] == 1 and row[int(cell[1])] == 1 and row[int(right)] == 1:
             matches.append(left)
             matches.append(right)
-        elif row[left] != 1 and row[cell[1]] == 1 and row[right] == 1:
+        elif row[left] != 1 and row[int(cell[1])] == 1 and row[right] == 1:
             matches.append(right)
+        elif row[left] == 1 and row[int(cell[1])] == 1 and row[right] != 1:
+            matches.append(left)
+        elif row[left] != 1 and row[right] != 1:
+            break
+        left -= 1
+        right += 1
+    print(f'found matches at row: {cell[0]}, columns: {matches}')
+    if len(matches) >= 3:
+        print('Destroying matches')
+        destroy(int(cell[0]), matches)
+        print_board(board)
+    else:
+        print('No matches to destroy')
+        matches.clear()
 
+def destroy(row, columns):
+    for cell in columns:
+        board[row][cell] = '*'
+    
+ 
 instructions = "You can move a cell only to adjacent cells, if the movement result in 3 adjacents cells containing the numbe 1 those will turn to zero's"
 
 print_board(board)
