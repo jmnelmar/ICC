@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 public class FirstUniqueChar {
 
     public static void main(String[] args) throws IOException{
@@ -60,6 +63,24 @@ public class FirstUniqueChar {
 
        return Character.MIN_VALUE;
 
+    }
+
+    /*
+     * Including unicode using Java * stream features
+     */
+    public static String firstNonRpeatedCharacter(String word){
+        Map<Integer, Long> chs = word.codePoints()
+        .mapToObj(cp -> cp)
+        .collect(Collectors.groupingBy(Function.identity(),
+        LinkedHashMap::new, Collectors.counting()));
+        
+        int cp = chs.entrySet().stream()
+        .filter(e -> e.getValue() == 1L)
+        .findFirst()
+        .map(Map.Entry::getKey)
+        .orElse(Integer.valueOf(Character.MIN_VALUE));
+
+        return String.valueOf(Character.toChars(cp));
     }
     
 }
