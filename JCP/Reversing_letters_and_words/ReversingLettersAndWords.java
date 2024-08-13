@@ -37,8 +37,6 @@ public class ReversingLettersAndWords {
 
     public static String reverseWordsII(String str){
         String[] words = str.split(WHITESPACE);
-        System.out.println(words[0]);
-
         StringBuilder reversedString = new StringBuilder();
         
         for(String word: words){
@@ -50,11 +48,10 @@ public class ReversingLettersAndWords {
             reversedString.append(reversedWord).append(WHITESPACE);
         }
 
-        return  reverse(reversedString.toString());
+        return reversedString.toString();
     }
 
     public static String reverse(String str){
-        System.out.println(str);
         return new StringBuilder(str).reverse().toString();
     }
 }
