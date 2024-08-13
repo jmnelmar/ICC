@@ -10,7 +10,7 @@ import java.util.Map;
 public class FirstUniqueChar {
 
     public static void main(String[] args) throws IOException{
-        while(1==1){
+        while(1 == 1){
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Introduce a word - type exit to stop the program");
             String parameter = reader.readLine();
