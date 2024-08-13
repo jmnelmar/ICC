@@ -75,4 +75,14 @@ public class CountingDuplicates{
 
         return result;
     }
+
+    /*
+     * Using Java 8 stream features
+     * 
+     * public static Map<String, Long> CountDuplicateCharacters(String str){
+     *      Map<String, Long> result = str.codePoints()
+     *      .mapToObj(c->String.valueOf(Character.toChars(c)))
+     *      .collect(Collectors.groupingBy(c->c,Collectors.counting()));
+     * }
+     */
 }
