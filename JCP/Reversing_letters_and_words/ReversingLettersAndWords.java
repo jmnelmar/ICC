@@ -13,10 +13,10 @@ public class ReversingLettersAndWords {
             String parameter = reader.readLine();
             if(parameter.equals("exit"))
                 break;
-            System.out.println(reverseWords(parameter));
+            System.out.println(reverseWordsII(parameter));
 
         }
-       //System.out.println(reverseWords("hola mundo"));
+    
     }
 
     public static String reverseWords(String str){
@@ -31,15 +31,30 @@ public class ReversingLettersAndWords {
             }
             reversedString.append(reverseWord).append(WHITESPACE);
         }
-        /*
-        for(String w: words){
-            StringBuilder reverseWord = new StringBuilder();
-            for(int i = w.length() - 1; i >= 0; i-- ){
-                reverseWord.append(w.charAt(i));
-            }
-            reversedString.append(reverseWord).append(WHITESPACE);
-        }*/
 
         return reversedString.toString();
+    }
+
+    public static String reverseWordsII(String str){
+        String[] words = str.split(WHITESPACE);
+        System.out.println(words[0]);
+
+        StringBuilder reversedString = new StringBuilder();
+        
+        for(String word: words){
+            StringBuilder reversedWord = new StringBuilder();
+
+            for(int i = word.length() - 1; i >= 0; i--){
+                reversedWord.append(word.charAt(i));
+            }
+            reversedString.append(reversedWord).append(WHITESPACE);
+        }
+
+        return  reverse(reversedString.toString());
+    }
+
+    public static String reverse(String str){
+        System.out.println(str);
+        return new StringBuilder(str).reverse().toString();
     }
 }
