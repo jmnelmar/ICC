@@ -28,4 +28,10 @@ public class CheckingDigits {
         return true;
 
     }
+    /*
+     * contains only digict with Java 8 stream methods
+    */
+    public static boolean containsOnlyDigit(String str){
+        return !str.chars().anyMatch(n->!Character.isDigit(n));
+    }
 }
