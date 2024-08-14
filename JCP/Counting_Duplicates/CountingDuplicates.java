@@ -1,7 +1,6 @@
 package ICC.ICC.JCP.Counting_Duplicates;
 
 import java.io.BufferedReader;
-import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -83,6 +82,7 @@ public class CountingDuplicates{
      *      Map<String, Long> result = str.codePoints()
      *      .mapToObj(c->String.valueOf(Character.toChars(c)))
      *      .collect(Collectors.groupingBy(c->c,Collectors.counting()));
+     *      return result;
      * }
      */
 }

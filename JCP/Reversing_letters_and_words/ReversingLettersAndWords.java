@@ -3,9 +3,13 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ReversingLettersAndWords {
     private static final String WHITESPACE = " ";
+    private static final Pattern PATTERN = Pattern.compile(" ");
+
     public static void main(String[] args) throws IOException{
         while(1 == 1){
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -13,8 +17,9 @@ public class ReversingLettersAndWords {
             String parameter = reader.readLine();
             if(parameter.equals("exit"))
                 break;
-            System.out.println(reverseWordsII(parameter));
-
+            //System.out.println(reverseWords(parameter));
+            //System.out.println(reverseWordsII(parameter));
+            System.out.println(reverseWordsWithStreams(parameter));
         }
     
     }
@@ -53,5 +58,14 @@ public class ReversingLettersAndWords {
 
     public static String reverse(String str){
         return new StringBuilder(str).reverse().toString();
+    }
+
+    /*
+     * Using Java 8 stream methods
+     */
+    public static String reverseWordsWithStreams(String str){
+        return PATTERN.splitAsStream(str)
+        .map(w -> new StringBuilder(w).reverse())
+        .collect(Collectors.joining(" "));
     }
 }
