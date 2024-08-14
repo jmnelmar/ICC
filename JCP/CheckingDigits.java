@@ -34,4 +34,12 @@ public class CheckingDigits {
     public static boolean containsOnlyDigit(String str){
         return !str.chars().anyMatch(n->!Character.isDigit(n));
     }
+
+    /**
+     * Solution usign string matches 
+     * this method returns a boolean value indicating whether or not this string matches the given regular expresion
+     */
+    public static boolean containsOnlyDigitII(String str){
+        return str.matches("[0-9]+");
+    }
 }
