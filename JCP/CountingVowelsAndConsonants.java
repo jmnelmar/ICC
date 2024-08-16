@@ -48,7 +48,7 @@ public class CountingVowelsAndConsonants {
     public static List<Integer> countVowelsAndConsonantsII(String str){
         str = str.toLowerCase();
         int vowels = (int)str.chars().filter(c->allVowels.contains((char)c)).count();
-        int consonant = (int)str.chars().filter(c -> !allVowels.contains((char)c)).count();
+        int consonant = (int)str.chars().filter(c -> !allVowels.contains((char)c)).filter(ch->(ch >= 'a' && ch <= 'z')).count();
         List<Integer> result = new ArrayList<>();
         result.add(vowels);
         result.add(consonant);
