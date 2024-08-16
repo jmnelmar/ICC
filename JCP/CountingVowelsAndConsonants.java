@@ -42,6 +42,13 @@ public class CountingVowelsAndConsonants {
         return result;
     }
 
+    /*
+     * Solution using Java 8 style
+     */
+    public static List<Integer> countVowelsAndConsonantsII(String str){
+        
+    }
+
     public static void main(String[] args) throws Exception{
         while(1==1){
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
