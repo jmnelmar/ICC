@@ -46,7 +46,13 @@ public class CountingVowelsAndConsonants {
      * Solution using Java 8 style
      */
     public static List<Integer> countVowelsAndConsonantsII(String str){
-        
+        str = str.toLowerCase();
+        int vowels = (int)str.chars().filter(c->allVowels.contains((char)c)).count();
+        int consonant = (int)str.chars().filter(c -> !allVowels.contains((char)c)).count();
+        List<Integer> result = new ArrayList<>();
+        result.add(vowels);
+        result.add(consonant);
+        return result;
     }
 
     public static void main(String[] args) throws Exception{
@@ -58,6 +64,9 @@ public class CountingVowelsAndConsonants {
                 break;
             List<Integer> result = countVowelsAndConsonants(input);
 
+            System.out.println("vowels: "+result.get(0)+", consonants: "+result.get(1));
+            System.out.println("Using Java 8 style");
+            result = countVowelsAndConsonants(input);
             System.out.println("vowels: "+result.get(0)+", consonants: "+result.get(1));
         }
     }
