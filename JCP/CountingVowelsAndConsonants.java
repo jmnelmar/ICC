@@ -55,6 +55,15 @@ public class CountingVowelsAndConsonants {
         return result;
     }
 
+    /**
+     * Using partitionby method
+     */
+    public static List<Integer> countVowelsAndConstantsII(String str){
+        List<Integer> result = new ArrayList<>();
+        
+        return result;
+    }
+
     public static void main(String[] args) throws Exception{
         while(1==1){
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
