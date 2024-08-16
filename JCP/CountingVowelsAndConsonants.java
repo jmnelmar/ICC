@@ -1,9 +1,13 @@
 package ICC.ICC.JCP;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.HashSet;
-import javafx.util.Pair;
+import java.util.List;
+import java.util.Map;
 
 public class CountingVowelsAndConsonants {
     /* 
@@ -20,7 +24,7 @@ public class CountingVowelsAndConsonants {
 
     private static final Set<Character> allVowels = new HashSet(Arrays.asList('a','e','i','o','u'));
     
-    public static Pair<Integer, Integer> countVowelsAndConsonants(String str){
+    public static List<Integer> countVowelsAndConsonants(String str){
         str = str.toLowerCase();
         int vowels = 0;
         int consonants = 0;
@@ -32,6 +36,22 @@ public class CountingVowelsAndConsonants {
             else if(ch >= 'a' && ch <= 'z')
                 consonants++;
         }
-        return Pair.of(vowels,consonants);
+        List<Integer> result = new ArrayList<>();
+        result.add(vowels);
+        result.add(consonants);
+        return result;
+    }
+
+    public static void main(String[] args) throws Exception{
+        while(1==1){
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Introduce a phrase - type exit to close the program");
+            String input = reader.readLine();
+            if(input.equals("exit"))
+                break;
+            List<Integer> result = countVowelsAndConsonants(input);
+
+            System.out.println("vowels: "+result.get(0)+", consonants: "+result.get(1));
+        }
     }
 }
