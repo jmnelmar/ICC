@@ -70,7 +70,7 @@ public class CountingVowelsAndConsonants {
     public static void main(String[] args) throws Exception{
         while(1==1){
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Introduce a phrase - type exit to cl ose the program");
+            System.out.println("Introduce a phrase - type exit to close the program");
             String input = reader.readLine();
             if(input.equals("exit"))
                 break;
