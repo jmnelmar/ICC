@@ -10,7 +10,7 @@ def maxProfit( prices:list) -> int:
     
     return max_profit
 
-#Eficient solution.
+#Eficient solution o(n).
 def maxProfit_(prices:list) -> int:
     min_price, max_profit = float("inf"), 0
 
