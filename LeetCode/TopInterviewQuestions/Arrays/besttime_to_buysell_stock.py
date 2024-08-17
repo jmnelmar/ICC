@@ -37,13 +37,16 @@ def maxProfit(prices) -> int:
     total = 0
 
     for i in range(len(prices)):
+        print(f'before valley: {valley} peak: {peak} total: {total} i: {i}')
         if prices[i] < peak:
             total += peak - valley
             valley = prices[i]
             peak = valley
         else:
             peak = prices[i]
+        print(f'after valley: {valley} peak: {peak} total: {total} i: {i}')
     total += peak - valley
+    
     return total
 
 arr = [7, 1, 5, 3, 6, 4]
