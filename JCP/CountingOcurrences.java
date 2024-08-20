@@ -3,6 +3,7 @@ public class CountingOcurrences {
     public static void main(String[] args){
         String str =  "anona";
         System.out.println(countOcurrencesOfACharacter(str,"a"));
+        System.out.println(countingChar(str,'a'));
     }
     
     public static int countOcurrencesOfACharacter(String str, String ch){
@@ -10,5 +11,16 @@ public class CountingOcurrences {
             return -1;
         int result =  str.length() - str.replace(ch, "").length();
         return ch.length() == 2?result/2:result;
+    }
+
+    public static int countingChar(String str, char ch){
+        int result = 0;
+
+        for(int i = 0; i < str.length(); i++){
+            if(str.charAt(i) == ch)
+                result++;
+        }
+
+        return result;
     }
 }

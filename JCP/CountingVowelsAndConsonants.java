@@ -58,7 +58,7 @@ public class CountingVowelsAndConsonants {
     /**
      * Using partitionby method
      */
-    public static List<Integer> countVowelsAndConstantsII(String str){
+    public static List<Integer> countVowelsAndConstantsIII(String str){
         List<Integer> result = new ArrayList<>();
         Map<Boolean,Long> mapResult = str.chars().mapToObj(c -> (char)c)
                                       .filter(ch -> (ch >= 'a' && ch <= 'z'))
