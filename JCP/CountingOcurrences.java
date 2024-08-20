@@ -4,6 +4,7 @@ public class CountingOcurrences {
         String str =  "anona";
         System.out.println(countOcurrencesOfACharacter(str,"a"));
         System.out.println(countingChar(str,'a'));
+        System.out.println(countingCharJava8(str,'a'));
     }
     
     public static int countOcurrencesOfACharacter(String str, String ch){
@@ -22,5 +23,10 @@ public class CountingOcurrences {
         }
 
         return result;
+    }
+
+    /*Java 8 Style */
+    public static int countingCharJava8(String str, char ch){
+        return (int)str.chars().filter(c -> c == ch).count();
     }
 }
