@@ -25,6 +25,12 @@ rotate 2 steps to the right: [3,99,-1,-100]
 def rotate( nums: list, k: int) -> None:
     chunk = nums[k*-1:]
     #chunk = chunk[::-1]
+    rotations = 0
+    if k > len(nums):
+        rotations = (int)(k / len(nums))
+    else:
+        rotations = k
+        
     result = []
     for i in range(k):
         result.append(chunk[i])
@@ -34,6 +40,16 @@ def rotate( nums: list, k: int) -> None:
     nums = result
     print(nums)
 
+def rotateII(nums:list, key:int):
+    cnums = nums[:]
+    lenn = len(nums)
+
+    for i in range(lenn):
+        nums[(i+k) % lenn] = cnums[i]
+
+
+
 nums = [1,2,3,4,5,6,7] 
 k = 3
-rotate(nums,k)
+rotateII(nums,k)
+print(nums)
