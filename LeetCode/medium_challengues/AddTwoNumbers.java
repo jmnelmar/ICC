@@ -49,10 +49,12 @@ public class AddTwoNumbers {
         a.val = 2;
         a.next = new ListNode(4);
         a.next.next = new ListNode(3);
+        printList(a);
         
         b.val = 5;
         b.next = new ListNode(6);
         b.next.next = new ListNode(4);
+        printList(b);
 
         ListNode r = addTwoNumbers(a, b);
         printList(r);
@@ -67,6 +69,7 @@ public class AddTwoNumbers {
             l = l.next;
         }
         str += "( null )";
+        System.out.println(str);
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2){
