@@ -1,5 +1,8 @@
 package ICC.LeetCode.medium_challengues.utils.java;
 
+/*
+ * Utilities clases for LinkedList object
+ */
 public class LinkedList {
     
     public class Node{
