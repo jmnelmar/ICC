@@ -1,7 +1,6 @@
 def roate_k_times(nums:list, k:int):
     cnums = nums[:]
     lenn = len(nums)
-
     for i in range(lenn):
         nums[(i + k) % lenn] = cnums[i]
     

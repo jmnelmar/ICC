@@ -1,3 +1,6 @@
+'''
+Counting vowels in python3
+'''
 def CountingVowels(str):
     str = str.lower()
     vowels = 'aeiou'
