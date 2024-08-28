@@ -25,7 +25,7 @@ public class CheckPalindrome {
     }
 
     public static void main(String[] args){
-        String str = "ana";
+        String str = "anona3";
         System.out.println(str);
         System.out.println(IsPalindrome(str));
         System.out.println(IsPalindromeII(str));
