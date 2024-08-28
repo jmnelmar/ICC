@@ -11,8 +11,6 @@ public class CountVowelsConsonants {
         for(char c:str.toCharArray()){
             if("aeiouAEIOU".indexOf(c) != -1){
                 vowles++;
-            }else{
-                consonants++;
             }
         }
 
@@ -21,7 +19,19 @@ public class CountVowelsConsonants {
         return vowles;
     }
 
-    
+    public int CountConsonants(String str){
+        int consonants = 0;
+
+        for(char c: str.toCharArray()){
+            if( "aeiouAEIOU".indexOf(c) == -1){
+                consonants++;
+            } 
+        }
+
+        return consonants;
+    }
+
+
 
     public static void main(String[] args){
         String str = "anona";
