@@ -13,7 +13,7 @@ public class ArmStrong {
         return result;
     }
     /*
-     * Stromg numbers are that numbers whic the sumatory of its digits each raised to the len of its digits
+     * Armstromg numbers are that numbers whic the sumatory of its digits each raised to the len of its digits
      * example 153 = (1^3)+(5^3)+(3^3)
      */
     public static boolean IsAsStromg(int n){
