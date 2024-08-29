@@ -19,6 +19,13 @@ public class MergeTwoArrays {
 
     }
 
+    public static void mergeIII(int[] nums1, int m, int[] nums2, int n){
+        for( int i = 0; i < n; i++ ){
+            nums1[ m + i] = nums2[i]; 
+        }
+        Arrays.sort(nums1);
+    }
+
     public static void main(String[] args){
         int[] arr1 = {1,2,3};
         int[] arr2 = {4,5,6};
@@ -31,6 +38,11 @@ public class MergeTwoArrays {
 
         mergeII(arr3, m, arr4, n);
         System.out.println(Arrays.toString(arr3));
+
+        int[] arr5 = {1,2,3,0,0,0};
+        int[] arr6 = {4,5,6};
+        mergeII(arr5, m, arr6, n);
+        System.out.println(Arrays.toString(arr5));
         
     }
 }
