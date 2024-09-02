@@ -12,4 +12,11 @@ height, width, _ = img.shape
 boxes = pytesseract.image_to_boxes(img, config=myconfig)
 for box in boxes.splitlines():
     box = box.split(" ")
-    img = cv2.rectangle(img,(int(box[1], height - int(box[2], int(box[3], int(box[4]))))))
+    img = cv2.rectangle(
+        img,(
+            int(box[1]), 
+            height - int(box[2]), 
+            int(box[3]), 
+            height - int(box[4])
+            )
+        )
