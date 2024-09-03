@@ -5,7 +5,6 @@ public class StackX {
     private long[] stackArray;
     private int top;
 
-
     public StackX(int s){
         stackArray = new long[s];
         maxSize = s;
@@ -30,7 +29,21 @@ public class StackX {
 
     public boolean isFull(){
         return ( top == maxSize - 1);
-    }
+    }    
 
-    
+    public static void main(String[] args){
+        StackX theStack = new StackX(10);
+
+        theStack.push(20);
+        theStack.push(40);
+        theStack.push(60);
+        theStack.push(80);
+
+        while(!theStack.isEmpty()){
+            long value = theStack.pop();
+            System.out.print(value);
+            System.out.print(" ");
+        }
+        System.out.println("");
+    }
 }
