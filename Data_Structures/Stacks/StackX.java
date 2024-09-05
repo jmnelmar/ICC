@@ -1,5 +1,5 @@
 package ICC.Data_Structures.Stacks;
-
+/*Stack Data Structure */
 public class StackX {
     private int maxSize;
     private long[] stackArray;
