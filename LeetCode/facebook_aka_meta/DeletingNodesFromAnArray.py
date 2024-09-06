@@ -11,8 +11,8 @@ def modifiedList( nums, head):
             return None
 
         current = head #making a shadow copy to tleft head in the first node
-        while current.next:
-            if current.next.val in values_to_remove:
+        while current.next:# rgoing throught the list to remove values 
+            if current.next.val in values_to_remove:# if the node is equals to one value to remove
                 current.next = current.next.next
             else:
                 current = current.next
