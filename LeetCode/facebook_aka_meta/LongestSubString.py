@@ -60,7 +60,8 @@ def longest(s:str)->int:
 @pytest.mark.parametrize("value, expected",[
     ("abcabcbb",3),
     ("bbbbb",1),
-    ("pwwkew",3)
+    ("pwwkew",3),
+    ("pwwkewssdewdwa",3),
     ])
 def test_lengthOfLongestSubstring(value,expected):
     assert longest(value) == expected

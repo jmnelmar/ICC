@@ -5,7 +5,7 @@ def mminRemoveToMakeValid(s:str) -> str:
     stack = []
     for i, c in enumerate(s):
         if not c in "()":
-            continue
+            continue    
         
         if c == "(": #adding open parenthesis to the stack
             stack.append(i)

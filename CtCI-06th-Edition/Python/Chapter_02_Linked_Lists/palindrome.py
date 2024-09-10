@@ -14,7 +14,6 @@ def palindrome(lst:Node):
         head = n
         aux = aux.next
     reversed_list.head = head
-    print(str(reversed_list))
 
     while lst is not None:
         if lst.value != head.value:
